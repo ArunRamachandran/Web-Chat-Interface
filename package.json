@@ -1,7 +1,7 @@
 {
   "name": "chat-interface",
   "version": "1.0.0",
-  "description": "Minila user interface for a chat application",
+  "description": "Minimal user interface for a chat application",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
