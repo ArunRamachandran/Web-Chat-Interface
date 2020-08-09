@@ -1,0 +1,40 @@
+.message-panel-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+
+    .web-chat-box {
+        .chat-history-container {
+
+            .single-message-field {
+                border: 1px solid #dfe1e5;
+                padding: 20px 20px;
+                margin: 5px 0;
+                border-radius: 5px;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            .own-message {
+                text-align: right
+            }
+
+            .received-message {
+                text-align: left;
+            }
+        }
+    }
+
+    .new-message-section {
+        position: fixed;
+        bottom: 0;
+        margin: 20px 10px;
+        min-width: 80%;
+    }
+}
+
+.empty-panel {
+    text-align: center;
+}
