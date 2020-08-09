@@ -6,7 +6,7 @@ const initialChatState = {
     messageStore: {}
 }
 
-export const chatData = (state = initialChatState, action) => {
+const chatData = (state = initialChatState, action) => {
     const { type, payload } = action;
 
     switch (type) {
@@ -39,3 +39,5 @@ export const chatData = (state = initialChatState, action) => {
             return state;
     }
 }
+
+export default chatData;

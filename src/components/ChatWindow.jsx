@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ContactsList } from '../containers/ContactsList';
 import { MessagePanel } from '../containers/MessagePanel';
 

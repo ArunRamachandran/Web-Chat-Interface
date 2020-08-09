@@ -28,7 +28,7 @@ export const MessagePanel = () => {
                     messages ? 
                         <div>
                             {messages.map((message, id) => (
-                                <div className={`single-message-field ${message.sendBy === 'self' ? 'own-message' : 'received-message'}`}>
+                                <div key={id} className={`single-message-field ${message.sendBy === 'self' ? 'own-message' : 'received-message'}`}>
                                     <p>{message.content}</p>
                                 </div>
                             ))}
