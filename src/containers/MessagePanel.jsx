@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { InputPlaceholder } from '../components/InputPlaceholder';
-import { pushMessageToActiveThread } from '../actions/actions';
+import { pushMessageToActiveThread, updateDraftMessage } from '../actions/actions';
 
 export const MessagePanel = () => {
 
     const activeChatThread = useSelector(state => state.chatData.activeChatThread);
     const messageStore = useSelector(state => state.chatData.messageStore);
     const contactsList = useSelector(state => state.chatData.contacts);
+    const draftData = useSelector(state => state.chatData.draft);
+
     const dispatch = useDispatch();
 
+    const _handleOnChange = (value) => {
+
+        dispatch(updateDraftMessage({
+            activeUserID: activeChatThread,
+            message: value
+        }))
+    }
+
     const _messageHandler = (text) => {
-        text && dispatch(pushMessageToActiveThread({
+        draftData[activeChatThread] && dispatch(pushMessageToActiveThread({
             _id: new Date().getTime(),
             sendBy: 'self',
             sendTo: activeChatThread,
-            content: text,
+            content: draftData[activeChatThread],
             channel: 'web',
             isReacted: false
+        }))
+
+        dispatch(updateDraftMessage({
+            activeUserID: activeChatThread,
+            message: ''
         }))
     }
 
@@ -63,7 +78,10 @@ export const MessagePanel = () => {
                         placeholder="Type your message here"
                         context="Send"
                         customBtnClassName="chat-message-btn"
+                        draftMessage={draftData[activeChatThread]}
+                        showDraft={true}
                         onClick={_messageHandler}
+                        onChange={_handleOnChange}
                     />
                 }
             </div>

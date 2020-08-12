@@ -10,7 +10,8 @@ describe('chatReducer', () => {
         defaultState = {
             contacts: [],
             activeChatThread: undefined,
-            messageStore: {}
+            messageStore: {},
+            draft: {}
         }
     })
 

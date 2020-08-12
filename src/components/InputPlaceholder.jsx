@@ -7,11 +7,12 @@ export const InputPlaceholder = (props) => {
 
     const _onChangeHandler = (value) => {
         updateText(value);
+        props.onChange && props.onChange(value);
     }
 
     const _handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            userInput && props.onClick && props.onClick(userInput);
+            (userInput || draftMessage) && props.onClick && props.onClick(draftMessage ? draftMessage : userInput);
             updateText('');
         } 
     }
@@ -26,14 +27,16 @@ export const InputPlaceholder = (props) => {
     const {
         placeholder,
         context,
-        customBtnClassName
+        customBtnClassName,
+        draftMessage,
+        showDraft
     } = props;
 
     return (
         <div className="input-placeholder-wrapper">
             <TextField 
                 placeholder={placeholder} 
-                value={userInput} 
+                value={showDraft ? draftMessage : userInput} 
                 onChange={_onChangeHandler}
                 onKeyDown={_handleKeyDown}
             />

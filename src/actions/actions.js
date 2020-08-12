@@ -15,8 +15,14 @@ const pushMessageToActiveThread = (data) => ({
     payload: data
 })
 
+const updateDraftMessage = (data) => ({
+    type: Constants.UPDATE_DRAFT_MESSAGE,
+    payload: data
+})
+
 export {
     updateContactsList,
     updateActiveChatThread,
-    pushMessageToActiveThread
+    pushMessageToActiveThread,
+    updateDraftMessage
 }
